@@ -14,7 +14,7 @@ describe('plugin', () => {
     vi.clearAllMocks();
   });
 
-  it('logs the template name', () => {
+  it('logs the plugin name', () => {
     examplePlugin(k).example();
 
     expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-text');

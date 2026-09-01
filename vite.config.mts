@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(import.meta.dirname, 'src/plugin.ts'),
-      name: 'KaplayPluginTemplate',
+      name: 'KaplayPluginText',
       formats: ['cjs', 'es', 'umd'],
       fileName: (format, entryName) => {
         switch (format) {

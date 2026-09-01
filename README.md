@@ -36,10 +36,10 @@ Import the plugin:
 
 ```ts
 import kaplay from 'kaplay';
-import { examplePlugin } from 'kaplay-plugin-text';
+import { styledTextPlugin } from 'kaplay-plugin-text';
 
 const k = kaplay({
-  plugins: [examplePlugin],
+  plugins: [styledTextPlugin],
 });
 ```
 
@@ -57,7 +57,7 @@ To load the plugin using a script:
 
 <script>
   const k = kaplay({
-    plugins: [KaplayPluginTemplate.examplePlugin],
+    plugins: [KaplayPluginText.styledTextPlugin],
   });
 
   k.example();
