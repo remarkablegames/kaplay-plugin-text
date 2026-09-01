@@ -22,6 +22,6 @@ describe('dist/plugin.mjs', () => {
 
     examplePlugin(k).example();
 
-    expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-template');
+    expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-text');
   });
 });

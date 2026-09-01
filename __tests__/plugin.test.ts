@@ -17,6 +17,6 @@ describe('plugin', () => {
   it('logs the template name', () => {
     examplePlugin(k).example();
 
-    expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-template');
+    expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-text');
   });
 });

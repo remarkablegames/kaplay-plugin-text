@@ -10,7 +10,7 @@ export type Example = () => void;
 
 export function examplePlugin(k: KAPLAYCtx) {
   const example: Example = () => {
-    k.debug.log('kaplay-plugin-template');
+    k.debug.log('kaplay-plugin-text');
   };
 
   return { example };
