@@ -4,9 +4,9 @@
 
 [![NPM version](https://img.shields.io/npm/v/kaplay-plugin-text.svg)](https://www.npmjs.com/package/kaplay-plugin-text)
 [![build](https://github.com/remarkablegames/kaplay-plugin-text/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/kaplay-plugin-text/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/remarkablegames/kaplay-plugin-text/graph/badge.svg?token=E7kjfLCpkM)](https://codecov.io/gh/remarkablegames/kaplay-plugin-text)
+[![codecov](https://codecov.io/gh/remarkablegames/kaplay-plugin-text/graph/badge.svg?token=eYjvmCLEpL)](https://codecov.io/gh/remarkablegames/kaplay-plugin-text)
 
-Kaplay Plugin Template
+🦖 KAPLAY plugin for styled text.
 
 ## Prerequisites
 

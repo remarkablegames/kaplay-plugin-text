@@ -1,7 +1,7 @@
 {
   "name": "kaplay-plugin-text",
   "version": "1.0.0-alpha",
-  "description": "KAPLAY plugin template",
+  "description": "KAPLAY plugin for styled text",
   "author": "Mark <mark@remarkablemark.org> (https://remarkablemark.org)",
   "main": "./dist/plugin.cjs",
   "module": "./dist/plugin.mjs",
@@ -54,6 +54,8 @@
   "keywords": [
     "kaplay",
     "plugin",
+    "text",
+    "ui",
     "game"
   ],
   "peerDependencies": {
