@@ -169,13 +169,12 @@ Returns a `StyledTextComp` component for rendering styled text.
 
 #### Component Properties
 
-| Property        | Type           | Description                      |
-| --------------- | -------------- | -------------------------------- |
-| `id`            | `'styledText'` | Component ID                     |
-| `text`          | `string`       | Get/set text (re-renders on set) |
-| `width`         | `number`       | Rendered text width              |
-| `height`        | `number`       | Rendered text height             |
-| `setStyle(opt)` | `void`         | Update styles and re-render      |
+| Property        | Type     | Description                      |
+| --------------- | -------- | -------------------------------- |
+| `text`          | `string` | Get/set text (re-renders on set) |
+| `width`         | `number` | Get rendered text width          |
+| `height`        | `number` | Get rendered text height         |
+| `setStyle(opt)` | `void`   | Update styles and re-render      |
 
 ## Release
 
