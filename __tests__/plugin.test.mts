@@ -1,27 +1,21 @@
 import type { KAPLAYCtx } from 'kaplay';
 
-import { examplePlugin } from '../dist/plugin.mjs';
+import { styledTextPlugin } from '../dist/plugin.mjs';
 
 describe('dist/plugin.mjs', () => {
   it('exports plugin', () => {
-    expect(examplePlugin).toBeTypeOf('function');
+    expect(styledTextPlugin).toBeTypeOf('function');
   });
 
   it('adds plugin', () => {
     const k = {} as unknown as KAPLAYCtx;
-    expect(examplePlugin(k).example).toBeTypeOf('function');
+    expect(styledTextPlugin(k).styledText).toBeTypeOf('function');
   });
 
-  it('calls plugin', () => {
-    const log = vi.fn();
-    const k = {
-      debug: {
-        log,
-      },
-    } as unknown as KAPLAYCtx;
-
-    examplePlugin(k).example();
-
-    expect(log).toHaveBeenCalledExactlyOnceWith('kaplay-plugin-text');
+  it('creates component', () => {
+    const k = {} as unknown as KAPLAYCtx;
+    const comp = styledTextPlugin(k).styledText('hello');
+    expect(comp.id).toBe('styledText');
+    expect(comp.text).toBe('hello');
   });
 });

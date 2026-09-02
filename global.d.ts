@@ -1,7 +1,10 @@
-import type { Example } from './dist/plugin';
+import type { StyledTextComp } from './dist/plugin';
 
 declare global {
-  var example: Example;
+  var styledText: (
+    txt?: string,
+    opt?: import('./dist/plugin').StyledTextCompOpt,
+  ) => StyledTextComp;
 }
 
 export {};
