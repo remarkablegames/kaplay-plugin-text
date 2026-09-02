@@ -6,7 +6,7 @@
 [![build](https://github.com/remarkablegames/kaplay-plugin-text/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/kaplay-plugin-text/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/remarkablegames/kaplay-plugin-text/graph/badge.svg?token=eYjvmCLEpL)](https://codecov.io/gh/remarkablegames/kaplay-plugin-text)
 
-🦖 KAPLAY plugin for styled text.
+🦖 KAPLAY plugin for styled text. Read the [blog post](https://remarkablegames.org/posts/kaplay-plugin-text/).
 
 ## Prerequisites
 
