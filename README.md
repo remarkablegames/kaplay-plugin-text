@@ -43,10 +43,71 @@ const k = kaplay({
 });
 ```
 
-Use the plugin:
+Outline text:
 
 ```ts
-k.example();
+k.styledText('Hello', {
+  size: 48,
+  fill: k.rgb(255, 255, 255),
+  outline: {
+    color: k.rgb(0, 0, 0),
+    width: 4,
+  },
+});
+```
+
+Add a drop shadow:
+
+```ts
+k.styledText('Hello', {
+  size: 48,
+  fill: k.rgb(255, 255, 255),
+  shadow: {
+    color: k.rgb(0, 0, 0),
+    offsetX: 4,
+    offsetY: 4,
+    blur: 8,
+  },
+});
+```
+
+Fill with a gradient:
+
+```ts
+k.styledText('Hello', {
+  size: 48,
+  gradient: {
+    from: k.rgb(255, 0, 0),
+    to: k.rgb(0, 0, 255),
+    direction: 'horizontal',
+  },
+});
+```
+
+Combine outline, shadow, and gradient:
+
+```ts
+k.styledText('GAME OVER', {
+  size: 56,
+  outline: { color: k.rgb(0, 0, 0), width: 6 },
+  shadow: { color: k.rgb(0, 0, 0), offsetX: 6, offsetY: 6, blur: 12 },
+  gradient: {
+    from: k.rgb(255, 215, 0),
+    to: k.rgb(255, 50, 50),
+    direction: 'horizontal',
+  },
+});
+```
+
+Update text and styles at runtime:
+
+```ts
+const score = k.styledText('Score: 0', { size: 32 });
+
+score.text = 'Score: 10';
+
+// Update styles at runtime
+score.setStyle({ fill: k.rgb(0, 255, 0) });
 ```
 
 To load the plugin using a script:
@@ -60,9 +121,60 @@ To load the plugin using a script:
     plugins: [KaplayPluginText.styledTextPlugin],
   });
 
-  k.example();
+  k.styledText('Hello', {
+    size: 48,
+    outline: { color: k.rgb(0, 0, 0), width: 4 },
+  });
 </script>
 ```
+
+## How It Works
+
+The plugin creates an offscreen HTML5 `<canvas>` element, renders text using the 2D context API (`strokeText`, `shadowBlur`, `createLinearGradient`, `fillText`), then converts the canvas to a KAPLAY sprite via `SpriteData.fromImage()`.
+
+KAPLAY renders via WebGL, which doesn't natively support stroke, shadow, or gradient on text. The canvas API does, so this plugin bridges the gap by rasterizing styled text to a texture and rendering it as a sprite.
+
+## Performance
+
+Rendering only happens when text or styles change — per-frame draws are a single cached sprite call. Canvas and textures are reused across updates.
+
+## Limitations
+
+- **No bitmap font support**: canvas only supports CSS font families, not KAPLAY's bitmap fonts
+- **No `textStyles` / `[style]` markup**: KAPLAY's per-character style syntax doesn't work — text is rendered as a flat string
+- **No `textTransform`**: per-character `CharTransform` (pos, scale, angle, color per char) is not supported
+- **No `letterSpacing`**: canvas has no native letter-spacing (may work in modern browsers via `ctx.letterSpacing`, but not universal)
+- **Not a drop-in replacement for `text()`**: `styledText()` is a separate component; use `text()` for plain text, `styledText()` when you need outline/shadow/gradient
+
+## API
+
+### `styledText(txt?, opt?)`
+
+Returns a `StyledTextComp` component for rendering styled text.
+
+#### Parameters
+
+| Option            | Type                 | Default                           | Description                                       |
+| ----------------- | -------------------- | --------------------------------- | ------------------------------------------------- |
+| `txt`             | `string`             | `''`                              | The text to display                               |
+| `opt.size`        | `number`             | `48`                              | Font size in pixels                               |
+| `opt.font`        | `string`             | kaplay init font or `'monospace'` | CSS font family                                   |
+| `opt.fill`        | `Color`              | `Color.WHITE`                     | Fill color                                        |
+| `opt.outline`     | `Outline`            | —                                 | Text outline (`{ width?, color?, opacity? }`)     |
+| `opt.shadow`      | `StyledTextShadow`   | —                                 | Drop shadow (`{ color, offsetX, offsetY, blur }`) |
+| `opt.gradient`    | `StyledTextGradient` | —                                 | Color gradient (`{ from, to, direction }`)        |
+| `opt.align`       | `TextAlign`          | `'left'`                          | Text alignment (`'left'`, `'center'`, `'right'`)  |
+| `opt.width`       | `number`             | —                                 | Wrap width in pixels                              |
+| `opt.lineSpacing` | `number`             | `0`                               | Gap between lines in pixels                       |
+
+#### Component Properties
+
+| Property        | Type     | Description                      |
+| --------------- | -------- | -------------------------------- |
+| `text`          | `string` | Get/set text (re-renders on set) |
+| `width`         | `number` | Get rendered text width          |
+| `height`        | `number` | Get rendered text height         |
+| `setStyle(opt)` | `void`   | Update styles and re-render      |
 
 ## Release
 
