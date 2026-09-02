@@ -1,6 +1,6 @@
 {
   "name": "kaplay-plugin-text",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0",
   "description": "KAPLAY plugin for styled text",
   "author": "Mark <mark@remarkablemark.org> (https://remarkablemark.org)",
   "main": "./dist/plugin.cjs",
